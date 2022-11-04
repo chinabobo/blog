@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>EMQX | Herbert&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="EMQ X R3.2 消息服务器简介EMQ X (Erlang&#x2F;Enterprise&#x2F;Elastic MQTT Broker) 是基于 Erlang&#x2F;OTP 平台开发的开源物联网 MQTT 消息服务器。Erlang&#x2F;OTP 是出色的软实时(Soft-Realtime)、低延时(Low-Latency)、分布式(Distributed) 的语言。MQTT 是轻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EMQX">
+<meta property="og:url" content="http://example.com/2022/11/04/EMQX/index.html">
+<meta property="og:site_name" content="Herbert&#39;s Blog">
+<meta property="og:description" content="EMQ X R3.2 消息服务器简介EMQ X (Erlang&#x2F;Enterprise&#x2F;Elastic MQTT Broker) 是基于 Erlang&#x2F;OTP 平台开发的开源物联网 MQTT 消息服务器。Erlang&#x2F;OTP 是出色的软实时(Soft-Realtime)、低延时(Low-Latency)、分布式(Distributed) 的语言。MQTT 是轻">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/pic/mqtt-pubsub-2022-11-02-1413.png">
+<meta property="og:image" content="http://example.com/pic/the-certification-chain_2022-11-04.png">
+<meta property="og:image" content="http://example.com/pic/ACL-20221104.png">
+<meta property="og:image" content="http://example.com/pic/Shared-subscription-202211041810.png">
+<meta property="article:published_time" content="2022-11-04T07:29:36.000Z">
+<meta property="article:modified_time" content="2022-11-04T10:32:34.185Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/pic/mqtt-pubsub-2022-11-02-1413.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Herbert&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Herbert&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-EMQX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/11/04/EMQX/" class="article-date">
+  <time datetime="2022-11-04T07:29:36.000Z" itemprop="datePublished">2022-11-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      EMQX
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EMQ-X-R3-2-消息服务器简介"><a href="#EMQ-X-R3-2-消息服务器简介" class="headerlink" title="EMQ X R3.2 消息服务器简介"></a>EMQ X R3.2 消息服务器简介</h2><p>EMQ X (Erlang&#x2F;Enterprise&#x2F;Elastic MQTT Broker) 是基于 Erlang&#x2F;OTP 平台开发的开源物联网 MQTT 消息服务器。Erlang&#x2F;OTP 是出色的软实时(Soft-Realtime)、低延时(Low-Latency)、分布式(Distributed) 的语言。MQTT 是轻量的(Lightweight)、发布订阅模式(PubSub) 的物联网消息协议。</p>
+<span id="more"></span>
+
+<p>EMQ X 面向海量的 <strong>移动&#x2F;物联网&#x2F;车载</strong> 等终端接入，并实现在海量物理网设备间快速低延时的消息路由:</p>
+<ol>
+<li>稳定承载大规模的 MQTT 客户端连接，单服务器节点支持百万连接。</li>
+<li>分布式节点集群，快速低延时的消息路由，单集群支持千万规模的路由。</li>
+<li>消息服务器内扩展，支持定制多种认证方式、高效存储消息到后端数据库。</li>
+<li>完整物联网协议支持，MQTT、MQTT-SN、CoAP、LwM2M、私有 TCP&#x2F;UDP 协议支持。</li>
+</ol>
+<h2 id="MQTT-发布订阅模式简述"><a href="#MQTT-发布订阅模式简述" class="headerlink" title="MQTT 发布订阅模式简述"></a>MQTT 发布订阅模式简述</h2><p>MQTT 是基于 <strong>发布(Publish)&#x2F;订阅(Subscribe)</strong> 模式来进行通信及数据交换的，与 HTTP 的 <strong>请求(Request)&#x2F;应答(Response)</strong> 的模式有本质的不同。</p>
+<p><strong>订阅者(Subscriber)</strong> 会向 <strong>消息服务器(Broker)</strong> 订阅一个 <strong>主题(Topic)</strong> 。成功订阅后，消息服务器会将该主题下的消息转发给所有的订阅者。</p>
+<p>主题(Topic)以 ‘&#x2F;‘ 为分隔符区分不同的层级。包含通配符 ‘+’ 或 ‘#’ 的主题又称为 <strong>主题过滤器(Topic Filters)</strong> ; 不含通配符的称为 <strong>主题名(Topic Names)</strong> 例如:</p>
+<p>注: ‘+’ 通配一个层级，’#’ 通配多个层级(必须在末尾)。 注: 发布者(Publisher) 只能向 ‘主题名’ 发布消息，订阅者(Subscriber) 则可以通过订阅 ‘主题过滤器’ 来通配多个主题名称。</p>
+<h2 id="MQTT-发布订阅"><a href="#MQTT-发布订阅" class="headerlink" title="MQTT 发布订阅"></a>MQTT 发布订阅</h2><p>MQTT 是为移动互联网、物联网设计的轻量发布订阅模式的消息服务器，目前支持 MQTT <a target="_blank" rel="noopener" href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html">v3.1.1</a>和 <a target="_blank" rel="noopener" href="http://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html">v5.0</a>:</p>
+<p><img src="/pic/mqtt-pubsub-2022-11-02-1413.png" alt="MQTT pub/sub"></p>
+<p>EMQ X 启动后，任何设备或终端可通过 MQTT 协议连接到服务器，通过 <strong>发布(Publish)&#x2F;订阅(Subscribe)</strong> 进行交换消息。</p>
+<p> <a target="_blank" rel="noopener" href="https://github.com/mqtt/mqtt.github.io/wiki/libraries">MQTT 客户端库</a></p>
+<p>例如，mosquitto_sub&#x2F;pub 命令行发布订阅消息:</p>
+<pre><code>mosquitto_sub -h 127.0.0.1 -p 1883 -t topic -q 2
+mosquitto_pub -h 127.0.0.1 -p 1883 -t topic -q 1 -m &quot;Hello, MQTT!&quot;
+</code></pre>
+<h2 id="认证-x2F-访问控制"><a href="#认证-x2F-访问控制" class="headerlink" title="认证&#x2F;访问控制"></a>认证&#x2F;访问控制</h2><p><strong>EMQ X</strong> 消息服务器 <em>连接认证</em> 和 <em>访问控制</em> 由一系列的认证插件(Plugins)提供，他们的命名都符合 <code>emqx_auth_\&lt;name&gt;</code> 的规则。</p>
+<p>在 EMQ X 中，这两个功能分别是指：</p>
+<ol>
+<li><strong>连接认证</strong> : EMQ X 校验每个连接上的客户端是否具有接入系统的权限，若没有则会断开该连接</li>
+<li><strong>访问控制</strong> : EMQ X 校验客户端每个 <em>发布(Publish)&#x2F;订阅(Subscribe)</em> 的权限，以 <em>允许&#x2F;拒绝</em> 相应操作</li>
+</ol>
+<h3 id="认证-Authentication"><a href="#认证-Authentication" class="headerlink" title="认证(Authentication)"></a>认证(Authentication)</h3><p>EMQ X 消息服务器认证由一系列认证插件(Plugins)提供，系统支持按用户名密码、ClientID 或匿名认证。</p>
+<p>系统默认开启匿名认证(Anonymous)，通过加载认证插件可开启的多个认证模块组成认证链:</p>
+<p><img src="/pic/the-certification-chain_2022-11-04.png" alt="the-certification-chain"></p>
+<p><strong>开启匿名认证</strong></p>
+<p>etc&#x2F;emqx.conf 配置启用匿名认证:</p>
+<pre><code>允许匿名访问
+## Value: true | false
+allow_anonymous = true
+</code></pre>
+<h3 id="访问控制-ACL"><a href="#访问控制-ACL" class="headerlink" title="访问控制(ACL)"></a>访问控制(ACL)</h3><p>EMQ X 消息服务器通过 ACL(Access Control List) 实现 MQTT 客户端访问控制。</p>
+<p>ACL 访问控制规则定义:</p>
+<pre><code>允许(Allow)|拒绝(Deny) 谁(Who) 订阅(Subscribe)|发布(Publish) 主题列表(Topics)
+</code></pre>
+<p>MQTT 客户端发起订阅&#x2F;发布请求时，EMQ X 消息服务器的访问控制模块会逐条匹配 ACL 规则，直到匹配成功为止:</p>
+<p><img src="/pic/ACL-20221104.png" alt="ACL"></p>
+<h2 id="共享订阅-Shared-Subscription"><a href="#共享订阅-Shared-Subscription" class="headerlink" title="共享订阅 (Shared Subscription)"></a>共享订阅 (Shared Subscription)</h2><p>EMQ X R3.0 版本开始支持集群级别的共享订阅功能。共享订阅(Shared Subscription)支持多种消息派发策略:</p>
+<p><img src="/pic/Shared-subscription-202211041810.png" alt="Shared-subscription"></p>
+<p>共享订阅支持两种使用方式:</p>
+<table>
+<thead>
+<tr>
+<th>订阅前缀</th>
+<th>使用示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$queue&#x2F;</td>
+<td>mosquitto_sub -t ‘$queue&#x2F;topic’</td>
+</tr>
+<tr>
+<td>$share&#x2F;<group>&#x2F;</td>
+<td>mosquitto_sub -t ‘$share&#x2F;group&#x2F;topic’</td>
+</tr>
+</tbody></table>
+<p>示例:</p>
+<pre><code>mosquitto_sub -t &#39;$share/group/topic&#39;
+
+mosquitto_pub -t &#39;topic&#39; -m msg -q 2
+</code></pre>
+<p>EMQ X 通过 etc&#x2F;emqx.conf 中的 broker.shared_subscription_strategy 字段配置共享消息的派发策略。</p>
+<p>目前支持按以下几种策略派发消息：</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>random</td>
+<td>在所有共享订阅者中随机</td>
+</tr>
+<tr>
+<td>round_robin</td>
+<td>按订阅顺序</td>
+</tr>
+<tr>
+<td>sticky</td>
+<td>使用上次派发的订阅者</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>根据发送者的 ClientId</td>
+</tr>
+</tbody></table>
+<p>提示</p>
+<p>当所有的订阅者都不在线时，仍会挑选一个订阅者，并存至其 Session 的消息队列中</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/11/04/EMQX/" data-id="cla2960mc0000zjuo0o5r3wdn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/11/03/Auto-complete-in-alias/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Auto-complete in alias</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/04/EMQX/">EMQX</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/03/Auto-complete-in-alias/">Auto-complete in alias</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/29/delta-lake/">DeltaLake</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/06/my-first-post/">my first post</a>
+          </li>
+        
+          <li>
+            <a href="/1970/01/01/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
